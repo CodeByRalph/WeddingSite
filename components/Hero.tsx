@@ -185,6 +185,22 @@ export default function Hero() {
             transition={{ duration: 0.6, ease: "easeInOut" }}
           />
         </motion.button>
+
+        {/* Registry Link */}
+        <motion.div
+          className="mt-6"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.7 }}
+        >
+          <button
+            onClick={() => router.push('/registry')}
+            className="text-sky-200/80 hover:text-sky-100 text-sm tracking-wide
+                     transition-all duration-300 hover:scale-105"
+          >
+            View Our Registry
+          </button>
+        </motion.div>
       </motion.div>
     </motion.div>
   );
