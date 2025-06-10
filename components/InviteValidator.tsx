@@ -318,6 +318,57 @@ export default function InviteValidator() {
                 We have noted that you will be bringing {guestInfo.numberOfGuests - 1} guest{guestInfo.numberOfGuests > 2 ? 's' : ''}.
               </motion.p>
             )}
+
+            {/* Dress Code Section */}
+            <motion.div 
+              className="mt-8 p-6 bg-gradient-to-br from-sky-50/50 to-sky-100/50 rounded-2xl border border-sky-200/30"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.8 }}
+            >
+              <h3 className="text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2">
+                👔 Dress Code Information
+              </h3>
+              
+              <div className="text-left space-y-4">
+                <div className="bg-white/60 rounded-xl p-4">
+                  <h4 className="font-semibold text-gray-700 mb-2">Formal Attire Required</h4>
+                  <p className="text-sm text-gray-600">
+                    We&apos;re having a formal celebration and ask that all guests dress accordingly.
+                  </p>
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div className="bg-white/60 rounded-xl p-4">
+                    <h4 className="font-semibold text-pink-700 mb-2">👗 For Women</h4>
+                    <p className="text-sm text-gray-600 mb-2">Please avoid:</p>
+                    <ul className="text-xs text-gray-600 space-y-1">
+                      <li>• White or blue colored attire</li>
+                      <li>• Casual outfits</li>
+                      <li>• Shorts, t-shirts, or flannel</li>
+                    </ul>
+                  </div>
+
+                  <div className="bg-white/60 rounded-xl p-4">
+                    <h4 className="font-semibold text-blue-700 mb-2">🤵 For Men</h4>
+                    <p className="text-sm text-gray-600 mb-2">Please avoid:</p>
+                    <ul className="text-xs text-gray-600 space-y-1">
+                      <li>• Blue colored attire</li>
+                      <li>• Casual outfits</li>
+                      <li>• Shorts, t-shirts, or flannel</li>
+                      <li>• Vest is optional</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="bg-amber-50/80 rounded-xl p-4 border border-amber-200/50">
+                  <p className="text-sm text-amber-800">
+                    <strong>Remember:</strong> We want everyone to feel comfortable and elegant. 
+                    When in doubt, choose formal over casual. Thank you for helping make our day special!
+                  </p>
+                </div>
+              </div>
+            </motion.div>
           </motion.div>
 
           <motion.div 
