@@ -1,0 +1,31 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Allow read access to invitation documents for validation and dashboard
+    match /invites/{inviteId} {
+      // Allow reading any invite document (needed for token validation and dashboard)
+      allow read: if true;
+      
+      // Allow updating only if the document exists and is being marked as used
+      allow update: if resource != null && 
+                       request.auth == null && // No authentication required for RSVP
+                       resource.data.isUsed == false && // Can only update unused invites
+                       request.resource.data.isUsed == true && // Must be setting to used
+                       // Only check for fields that are actually being updated
+                       request.resource.data.keys().hasAll(['isUsed', 'primaryGuest', 'additionalGuests', 'modifiedAt']) &&
+                       request.resource.data.primaryGuest.keys().hasAll(['name', 'phone']) &&
+                       request.resource.data.primaryGuest.name is string &&
+                       request.resource.data.primaryGuest.phone is string &&
+                       request.resource.data.additionalGuests is list;
+      
+      // Deny all other operations (create, delete)
+      allow create, delete: if false;
+    }
+    
+    // Deny access to all other collections
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+} 
